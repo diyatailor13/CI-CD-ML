@@ -1,0 +1,5 @@
+numpy
+scikit-learn
+pytest
+
+# This tells Docker/Jenkins which Python libraries are required.
