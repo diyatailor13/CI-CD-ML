@@ -13,28 +13,28 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 echo 'Installing Python dependencies...'
-                bat 'python -m pip install -r requirements.txt'
+                sh 'python3 -m pip install -r requirements.txt'
             }
         }
 
         stage('Run Tests') {
             steps {
                 echo 'Running automated tests...'
-                bat 'python -m pytest'
+                sh 'python3 -m pytest'
             }
         }
 
         stage('Build Docker Image') {
             steps {
                 echo 'Building Docker image...'
-                bat 'docker build -t iris-ml-model .'
+                sh 'docker build -t iris-ml-model .'
             }
         }
 
         stage('Run Docker Container') {
             steps {
                 echo 'Running Docker container...'
-                bat 'docker run --rm iris-ml-model'
+                sh 'docker run --rm iris-ml-model'
             }
         }
     }
