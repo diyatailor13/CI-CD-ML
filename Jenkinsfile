@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    options {
+        skipDefaultCheckout(true)
+    }
+
     stages {
 
         stage('Checkout') {
@@ -13,7 +17,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 echo 'Installing Python dependencies...'
-                sh 'python3 -m pip install -r requirements.txt'
+                sh 'python3 -m pip install --break-system-packages -r requirements.txt'
             }
         }
 
